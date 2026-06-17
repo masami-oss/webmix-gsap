@@ -1,13 +1,28 @@
 ---
 name: webmix-gsap
-description: Generate refined, lightweight GSAP animations for websites and WordPress projects. Use when Codex or Claude Code is asked to create, edit, or review GSAP motion, ScrollTrigger scroll effects, SVG animation, page entrance effects, micro-interactions, or performance-conscious web animation with prefers-reduced-motion and mobile fallbacks.
+description: Guide refined, lightweight GSAP motion direction for websites, landing pages, product sites, SaaS interfaces, ecommerce, media sites, dashboards, and app UIs. Use alongside the official greensock/gsap-skills for GSAP API accuracy when Codex or Claude Code is asked to create, edit, or review tasteful web animation, ScrollTrigger effects, SVG motion, page transitions, micro-interactions, or performance-conscious motion with prefers-reduced-motion and mobile fallbacks.
 ---
 
 # Webmix GSAP
 
 ## Overview
 
-Create tasteful GSAP motion for production websites. Prefer subtle, fast, accessible animation that supports the content instead of drawing attention to itself.
+Use this skill as a motion-direction layer on top of the official `greensock/gsap-skills`.
+
+- Use `greensock/gsap-skills` for GSAP API correctness, plugin details, framework integration, and advanced patterns.
+- Use `webmix-gsap` for taste, restraint, accessibility, performance, and production motion judgment.
+
+Create tasteful GSAP motion for production web experiences. Prefer subtle, fast, accessible animation that supports the content and task instead of drawing attention to itself.
+
+## Pairing With Official GSAP Skills
+
+When both are available, apply them in this order:
+
+1. Load the relevant official GSAP skill for the technical domain, such as `gsap-core`, `gsap-scrolltrigger`, `gsap-react`, `gsap-frameworks`, `gsap-plugins`, or `gsap-performance`.
+2. Use the official skill's API guidance for syntax, cleanup, plugin registration, and framework lifecycle details.
+3. Apply this skill's constraints to reduce excess motion, simplify mobile behavior, and keep the final result polished and lightweight.
+
+Do not override official GSAP API guidance with this skill. If there is a conflict, keep the official implementation pattern and adjust the motion design parameters to match this skill.
 
 ## Motion Rules
 
@@ -17,10 +32,12 @@ Create tasteful GSAP motion for production websites. Prefer subtle, fast, access
 - Use calm eases such as `power2.out`, `power3.out`, `sine.out`, or `expo.out` sparingly. Avoid elastic/back/bounce by default.
 - Preserve readability: do not animate body copy in a way that delays access to content.
 - Do not create one-off animation systems when a small local GSAP module is enough.
+- Keep repeated UI interactions shorter and quieter than first-time content reveals.
+- Match the domain: editorial can be softer, SaaS should be efficient, ecommerce should not slow product inspection, dashboards should prioritize scanability.
 
 ## Implementation Pattern
 
-Use `gsap.context()` or a local cleanup function when the framework supports mounting/unmounting. In vanilla or WordPress, scope selectors to a root element and return cleanup.
+Use `gsap.context()` or a local cleanup function when the framework supports mounting/unmounting. In vanilla JavaScript, scope selectors to a root element and return cleanup.
 
 ```js
 import gsap from "gsap";
@@ -107,33 +124,26 @@ document.querySelectorAll(".js-draw-path").forEach((path) => {
 });
 ```
 
-## WordPress
+## Context Guidance
 
-Keep WordPress integration copy-pasteable and theme-friendly:
+Adapt the same restrained motion principles to the product type:
 
-- Put animation code in a small file such as `assets/js/animations.js`.
-- Enqueue GSAP and ScrollTrigger explicitly, or bundle them through the project's build step.
-- Use `defer` when possible.
-- Scope selectors with classes or data attributes owned by the theme/block.
-- Avoid animations that depend on admin-only markup or editor wrappers.
-
-```php
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js', [], null, true);
-    wp_enqueue_script('gsap-scrolltrigger', 'https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js', ['gsap'], null, true);
-    wp_enqueue_script('theme-animations', get_template_directory_uri() . '/assets/js/animations.js', ['gsap', 'gsap-scrolltrigger'], '1.0.0', true);
-});
-```
+- Marketing and landing pages: use reveals, mild parallax, and SVG accents to guide attention without delaying the offer.
+- SaaS and dashboards: prefer micro-interactions, state transitions, and small spatial cues over large entrance choreography.
+- Ecommerce: keep motion secondary to product browsing; avoid scroll effects that interfere with image inspection or purchase flow.
+- Editorial and media: use scroll reveals sparingly and prioritize reading comfort.
+- Apps and tools: animate state changes to clarify cause and effect; avoid decorative motion in repeated workflows.
 
 ## Checklist
 
 Before finishing generated GSAP work:
 
-1. Respect `prefers-reduced-motion`.
-2. Use `gsap.matchMedia()` or equivalent mobile branching.
-3. Keep mobile simpler than desktop.
-4. Animate mostly `transform` and `opacity`.
-5. Use ScrollTrigger for scroll effects.
-6. Clean up contexts, matchMedia instances, and ScrollTriggers in component-based projects.
-7. Verify that text remains readable and content is not hidden when JavaScript fails.
-8. Do not add heavy dependencies or decorative motion that the request did not need.
+1. Use official `greensock/gsap-skills` guidance for GSAP syntax and plugin behavior when available.
+2. Respect `prefers-reduced-motion`.
+3. Use `gsap.matchMedia()` or equivalent mobile branching.
+4. Keep mobile simpler than desktop.
+5. Animate mostly `transform` and `opacity`.
+6. Use ScrollTrigger for scroll effects.
+7. Clean up contexts, matchMedia instances, and ScrollTriggers in component-based projects.
+8. Verify that text remains readable and content is not hidden when JavaScript fails.
+9. Do not add heavy dependencies or decorative motion that the request did not need.

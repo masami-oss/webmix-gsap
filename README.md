@@ -1,10 +1,23 @@
 # webmix-gsap
 
-Custom Skill for generating refined, lightweight GSAP animations for websites, including WordPress projects.
+Custom Skill for guiding refined, lightweight GSAP motion across websites, landing pages, product sites, SaaS interfaces, ecommerce, media sites, dashboards, and app UIs.
+
+This is not a replacement for the official GSAP skills. Use it alongside `greensock/gsap-skills`:
+
+- `greensock/gsap-skills`: official GSAP API, plugins, framework patterns, and performance details
+- `webmix-gsap`: motion taste, restraint, accessibility, mobile lightness, and production polish
 
 This repository follows the same public Skill layout style as `diffusionstudio/lottie`: the Skill lives under `skills/`.
 
 ## Install
+
+Install the official GSAP skills first:
+
+```bash
+npx skills add https://github.com/greensock/gsap-skills
+```
+
+Then install this motion-direction skill:
 
 ```bash
 npx skills add masami-oss/webmix-gsap
@@ -16,6 +29,7 @@ To make this skill available from every Claude Code project on the same machine,
 
 ```bash
 mkdir -p ~/.claude/skills
+npx skills add https://github.com/greensock/gsap-skills
 npx skills add masami-oss/webmix-gsap
 ```
 
@@ -35,7 +49,7 @@ Ask Claude Code or Codex to use `webmix-gsap` when creating or reviewing GSAP mo
 
 Example:
 
-> Use webmix-gsap to add subtle fade-up section reveals, SVG path drawing, ScrollTrigger, prefers-reduced-motion support, and mobile fallbacks to this WordPress theme.
+> Use the official GSAP skills for implementation accuracy, then apply webmix-gsap as the motion direction layer. Create subtle fade-up reveals, SVG path drawing, ScrollTrigger, prefers-reduced-motion support, and mobile fallbacks. Keep the motion tasteful, lightweight, and restrained.
 
 ## Structure
 
