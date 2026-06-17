@@ -7,8 +7,27 @@ This repository follows the same public Skill layout style as `diffusionstudio/l
 ## Install
 
 ```bash
-npx skills add <your-github-user>/webmix-gsap
+npx skills add masami-oss/webmix-gsap
 ```
+
+## Claude Code global setup
+
+To make this skill available from every Claude Code project on the same machine, install or copy it into Claude Code's global skills directory:
+
+```bash
+mkdir -p ~/.claude/skills
+npx skills add masami-oss/webmix-gsap
+```
+
+If the `npx skills add` command does not place it under `~/.claude/skills`, copy the skill folder manually:
+
+```bash
+git clone https://github.com/masami-oss/webmix-gsap.git
+mkdir -p ~/.claude/skills
+cp -R webmix-gsap/skills/webmix-gsap ~/.claude/skills/webmix-gsap
+```
+
+Restart Claude Code after installing so the global skill list is reloaded.
 
 ## Use
 
