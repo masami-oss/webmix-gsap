@@ -1,0 +1,4 @@
+interface:
+  display_name: "Webmix GSAP"
+  short_description: "Generate refined, lightweight GSAP animations for websites."
+  default_prompt: "Create a tasteful GSAP animation for this website, using transform and opacity, ScrollTrigger for scroll effects, prefers-reduced-motion support, and mobile-friendly fallbacks."
